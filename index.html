@@ -4,23 +4,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AIConverse - Заявка</title>
+  <title>AIConverse</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f3f4f6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      color: #111827;
+    }
+    header {
+      background: #4f46e5;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
     }
     form {
       background: white;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-top: 2rem;
     }
     input, textarea, button {
       width: 100%;
@@ -39,17 +63,51 @@
     button:hover {
       background-color: #4338ca;
     }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #6b7280;
+    }
   </style>
 </head>
 <body>
 
-  <form id="tg-form">
+  <header>
+    <h1>AIConverse</h1>
+    <p>Мы превращаем ваши идеи в реальные AI-продукты</p>
+  </header>
+
+  <section>
+    <h2>О нас</h2>
+    <p>
+      AIConverse — это команда специалистов, создающих кастомные решения на базе искусственного интеллекта.
+      У вас есть идея, но нет команды? Мы поможем реализовать её — от концепции до запуска.
+    </p>
+  </section>
+
+  <section>
+    <h2>Что мы делаем</h2>
+    <p>
+      • Создаём Telegram-ботов и AI-ассистентов<br>
+      • Разрабатываем кастомные GPT-модели и интерфейсы<br>
+      • Помогаем интегрировать ИИ в бизнес-процессы<br>
+      • Сопровождаем проект от идеи до результата
+    </p>
+  </section>
+
+  <section>
     <h2>Оставьте заявку</h2>
-    <input type="text" name="name" placeholder="Имя" required />
-    <input type="email" name="email" placeholder="Почта" required />
-    <textarea name="idea" placeholder="Опишите вашу идею" required></textarea>
-    <button type="submit">Отправить</button>
-  </form>
+    <form id="tg-form">
+      <input type="text" name="name" placeholder="Имя" required />
+      <input type="email" name="email" placeholder="Почта" required />
+      <textarea name="idea" placeholder="Опишите вашу идею" required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 AIConverse. Все права защищены.
+  </footer>
 
   <script>
     document.getElementById("tg-form").addEventListener("submit", function(e) {
