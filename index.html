@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AIConverse</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIConverse</title>
+<style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -15,29 +16,40 @@
     header {
       background: #4f46e5;
       color: white;
-      padding: 2rem;
+      padding: 3rem 1rem;
       text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
     header p {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-size: 1.25rem;
     }
     section {
-      max-width: 800px;
+      max-width: 900px;
       margin: 2rem auto;
-      padding: 1rem;
+      padding: 0 1rem;
     }
     h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
+      color: #1f2937;
     }
-    p {
+    p, li {
       font-size: 1rem;
       line-height: 1.6;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
     }
     form {
       background: white;
@@ -67,49 +79,123 @@
       text-align: center;
       padding: 2rem;
       color: #6b7280;
+      font-size: 0.9rem;
     }
   </style>
-</head>
+<style>
+@media (max-width: 768px) {
+  header h1 { font-size: 2rem; }
+  header p { font-size: 1rem; }
+  h2 { font-size: 1.5rem; }
+  body { padding: 0 1rem; }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-in-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+#back-to-top:hover {
+  background: #4338ca;
+}
+</style></head>
 <body>
-
-  <header>
-    <h1>AIConverse</h1>
-    <p>Мы превращаем ваши идеи в реальные AI-продукты</p>
-  </header>
-
-  <section>
-    <h2>О нас</h2>
-    <p>
-      AIConverse — это команда специалистов, создающих кастомные решения на базе искусственного интеллекта.
-      У вас есть идея, но нет команды? Мы поможем реализовать её — от концепции до запуска.
+<header>
+<h1>AIConverse</h1>
+<p>Превращаем идеи в работающие AI-продукты</p>
+</header>
+<section>
+<h2>О нас</h2>
+<p>
+      AIConverse — это команда, которая помогает основателям, стартапам и компаниям быстро запускать AI-продукты.
+      Наша цель — взять вашу идею и воплотить её в минимальный жизнеспособный продукт (MVP), без головной боли и лишней бюрократии.
     </p>
-  </section>
-
-  <section>
-    <h2>Что мы делаем</h2>
-    <p>
-      • Создаём Telegram-ботов и AI-ассистентов<br>
-      • Разрабатываем кастомные GPT-модели и интерфейсы<br>
-      • Помогаем интегрировать ИИ в бизнес-процессы<br>
-      • Сопровождаем проект от идеи до результата
+</section>
+<section>
+<h2>Как мы работаем</h2>
+<div class="card">
+<ul>
+<li><strong>Вы оставляете заявку</strong> — мы получаем её в Telegram и оперативно связываемся</li>
+<li><strong>Обсуждаем идею</strong> — уточняем детали, предлагаем архитектуру</li>
+<li><strong>Собираем MVP</strong> — реализуем первую версию продукта</li>
+<li><strong>Тестируем и дорабатываем</strong> — чтобы всё работало так, как вы задумали</li>
+</ul>
+</div>
+</section>
+<section>
+<h2>Почему мы?</h2>
+<div class="card">
+<ul>
+<li>🎯 Фокус на AI-проектах — мы не делаем всё подряд</li>
+<li>🧠 Понимание и бизнеса, и технологий</li>
+<li>🚀 Быстрый запуск — MVP от 7 дней</li>
+<li>🔐 NDA и полная конфиденциальность</li>
+</ul>
+</div>
+</section>
+<section>
+<h2>Что умеет AI сегодня?</h2>
+<p>
+      Искусственный интеллект — это не будущее, а настоящее. Он уже сейчас:
     </p>
-  </section>
-
-  <section>
-    <h2>Оставьте заявку</h2>
-    <form id="tg-form">
-      <input type="text" name="name" placeholder="Имя" required />
-      <input type="email" name="email" placeholder="Почта" required />
-      <textarea name="idea" placeholder="Опишите вашу идею" required></textarea>
-      <button type="submit">Отправить</button>
-    </form>
-  </section>
-
-  <footer>
+<ul>
+<li>Обрабатывает клиентские обращения 24/7</li>
+<li>Пишет тексты, коды, генерирует изображения и видео</li>
+<li>Анализирует данные быстрее любого человека</li>
+<li>Помогает зарабатывать и экономить ресурсы</li>
+</ul>
+</section>
+<section>
+<h2>FAQ — Часто задаваемые вопросы</h2>
+<div class="card">
+<p><strong>Нужно ли иметь готовое ТЗ?</strong><br/>
+      Нет, мы поможем сформулировать задачу и предложим техническое решение.</p>
+<p><strong>Сколько это стоит?</strong><br/>
+      Зависит от сложности проекта. Мы предложим адекватный бюджет после обсуждения.</p>
+<p><strong>Как быстро вы запускаете?</strong><br/>
+      MVP можно сделать от 7 до 14 дней.</p>
+</div>
+</section>
+<section>
+<h2>Отзывы</h2>
+<div class="card">
+<p>“AIConverse помогли мне за 10 дней собрать Telegram-бота для образовательного проекта. Быстро, понятно, без лишней суеты.”<br/>— Основатель EdTech-стартапа</p>
+</div>
+<div class="card">
+<p>“Я дал идею — они сделали рабочий прототип и даже настроили автоответы. Очень доволен результатом.”<br/>— Индивидуальный предприниматель</p>
+</div>
+</section>
+<section>
+<h2>Оставьте заявку</h2>
+<form id="tg-form">
+<input name="name" placeholder="Имя" required="" type="text"/>
+<input name="email" placeholder="Почта" required="" type="email"/>
+<textarea name="idea" placeholder="Опишите вашу идею" required=""></textarea>
+<button type="submit">Отправить</button>
+</form>
+</section>
+<footer>
     © 2025 AIConverse. Все права защищены.
   </footer>
-
-  <script>
+<script>
     document.getElementById("tg-form").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -149,6 +235,26 @@
       });
     });
   </script>
+<button id="back-to-top">↑ Наверх</button><script>
+document.querySelectorAll('section').forEach(el => el.classList.add('fade-in'));
 
-</body>
+const showOnScroll = () => {
+  const elems = document.querySelectorAll('.fade-in');
+  elems.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      el.classList.add('visible');
+    }
+  });
+};
+window.addEventListener('scroll', showOnScroll);
+window.addEventListener('load', showOnScroll);
+
+const btn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) btn.style.display = 'block';
+  else btn.style.display = 'none';
+});
+btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script></body>
 </html>
