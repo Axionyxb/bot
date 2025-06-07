@@ -127,6 +127,37 @@ body.dark .card, body.dark form {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+body.dark .faq-question {
+  background: #4b5563;
+  color: #f3f4f6;
+}
+body.dark .faq-answer {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+.faq-card {
+  border: 1px solid #e5e7eb;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.faq-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.faq-card.open {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.faq-card.open .faq-answer {
+  max-height: 500px;
+  opacity: 1;
+}
 </style>
 <style>
 @media (max-width: 768px) {
@@ -163,7 +194,7 @@ body.dark .card, body.dark form {
   background: #4338ca;
 }
 </style></head>
-<body><div id="progress-bar" style="position: fixed; top: 0; left: 0; height: 4px; background: #4f46e5; width: 0%; z-index: 1000;"></div><button id="theme-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1000; background: #e5e7eb; color: #111827; border: none; padding: 0.5rem 1rem; border-radius: 9999px; cursor: pointer; font-size: 0.9rem;">🌓 Переключить тему</button>
+<body><div id="progress-bar" style="position: fixed; top: 0; left: 0; height: 4px; background: #4f46e5; width: 0%; z-index: 1000;"></div><button id="theme-toggle" style="position: fixed; top: 20px; left: 20px; z-index: 1000; background: #e5e7eb; color: #111827; border: none; padding: 0.4rem 0.8rem; border-radius: 0.5rem; cursor: pointer; font-size: 0.85rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">🌓 Переключить тему</button>
 <header>
 <h1>AIConverse</h1>
 <p>Превращаем идеи в работающие AI-продукты</p>
@@ -209,7 +240,6 @@ body.dark .card, body.dark form {
 <li>Помогает зарабатывать и экономить ресурсы</li>
 </ul>
 </section>
-
 <section id="ai"><h2>Где применим AI сегодня?</h2><div class="card"><ul><li>💬 AI-боты для общения с клиентами в мессенджерах</li><li>📊 Автоматическая обработка и анализ данных</li><li>✍️ Генерация описаний товаров и постов для соцсетей</li><li>🎓 Образовательные ассистенты и AI-репетиторы</li><li>🧾 Юридические ассистенты для составления документов</li><li>🖼️ Генерация изображений, логотипов и дизайнов</li></ul></div></section><section id="faq"><h2>FAQ — Часто задаваемые вопросы</h2><div class="faq-wrapper"><div class="faq-card"><div class="faq-question" onclick="toggleFaq(this)">Чем отличается ваш AI-бот от обычного чат-бота?</div><div class="faq-answer">Наш бот основан на языковых моделях (GPT и др.), он понимает контекст, генерирует осмысленные ответы, обучается на ваших данных и ведёт разговор почти как человек. Обычные боты работают по шаблонам и скриптам.</div></div><div class="faq-card"><div class="faq-question" onclick="toggleFaq(this)">Сколько времени нужно, чтобы запустить MVP?</div><div class="faq-answer">Обычно от 7 до 28 дней — в зависимости от сложности задачи. Мы фокусируемся на минимальном жизнеспособном продукте, который можно быстро протестировать и масштабировать.</div></div><div class="faq-card"><div class="faq-question" onclick="toggleFaq(this)">Можно ли подключить бота к сайту, Telegram и CRM одновременно?</div><div class="faq-answer">Да, можно. Мы делаем мультиканальные решения: бот работает на сайте, в Telegram, WhatsApp и может интегрироваться с CRM, Google Таблицами или базами данных.</div></div><div class="faq-card"><div class="faq-question" onclick="toggleFaq(this)">Что если я ещё сам не до конца понимаю, что хочу?</div><div class="faq-answer">Это нормально. Мы поможем сформулировать идею, уточним цели и предложим подходящие варианты реализации. Иногда из туманной мысли рождается сильный продукт — мы умеем это оформлять.</div></div><div class="faq-card"><div class="faq-question" onclick="toggleFaq(this)">Как вы гарантируете безопасность данных?</div><div class="faq-answer">Мы не храним ваши данные на сторонних серверах без необходимости, используем защищённые каналы передачи информации, можем подписать NDA и выбрать максимально приватные решения.</div></div></div></section><section id="form">
 <h2>Оставьте заявку</h2>
 <form id="tg-form">
@@ -262,28 +292,7 @@ body.dark .card, body.dark form {
       });
     });
   </script>
-<button id="back-to-top">↑ Наверх</button><script>
-document.querySelectorAll('section').forEach(el => el.classList.add('fade-in'));
-
-const showOnScroll = () => {
-  const elems = document.querySelectorAll('.fade-in');
-  elems.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50) {
-      el.classList.add('visible');
-    }
-  });
-};
-window.addEventListener('scroll', showOnScroll);
-window.addEventListener('load', showOnScroll);
-
-const btn = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) btn.style.display = 'block';
-  else btn.style.display = 'none';
-});
-btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script><script>
+<script>
 const toggleBtn = document.getElementById('theme-toggle');
 toggleBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark');
