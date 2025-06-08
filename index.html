@@ -575,40 +575,40 @@ function handleAIResponse() {
     .chat-widget { width: 90%; right: 5%; }
   }
 </style>
+
 <script>
-  async function sendChat() {
-    const input = document.getElementById("chat-input");
-    const msg = input.value.trim();
-    if (!msg) return;
+async function sendChat() {
+  const input = document.getElementById("chat-input");
+  const msg = input.value.trim();
+  if (!msg) return;
 
-    const chatBox = document.getElementById("chat-messages");
-    chatBox.innerHTML += `<div class="chat-message-user">${msg}</div>`;
-    input.value = "";
+  const chatBox = document.getElementById("chat-messages");
+  chatBox.innerHTML += `<div class="chat-message-user">${msg}</div>`;
+  input.value = "";
 
-    const loadingMsg = document.createElement("div");
-    loadingMsg.className = "chat-message-bot";
-    loadingMsg.textContent = "Печатает...";
-    chatBox.appendChild(loadingMsg);
-    chatBox.scrollTop = chatBox.scrollHeight;
+  const loadingMsg = document.createElement("div");
+  loadingMsg.className = "chat-message-bot";
+  loadingMsg.textContent = "Печатает...";
+  chatBox.appendChild(loadingMsg);
+  chatBox.scrollTop = chatBox.scrollHeight;
 
-    try {
-      const response = await fetch("https://bot-kappa-self.vercel.app/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg })
-      });
-      if (!response.ok) {
-        loadingMsg.textContent = "❌ Сервер вернул ошибку: " + response.status;
-      } else {
-        const data = await response.json();
-        loadingMsg.textContent = data.reply || "❌ Ошибка при получении ответа.";
-      }
-    } catch (err) {
-      loadingMsg.textContent = "❌ Ошибка соединения с AI.";
+  try {
+    const response = await fetch("https://bot-kappa-self.vercel.app/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg })
+    });
+    if (!response.ok) {
+      loadingMsg.textContent = "❌ Сервер вернул ошибку: " + response.status;
+    } else {
+      const data = await response.json();
+      loadingMsg.textContent = data.reply || "❌ Ошибка при получении ответа.";
     }
-
-    chatBox.scrollTop = chatBox.scrollHeight;
+  } catch (err) {
+    loadingMsg.textContent = "❌ Ошибка соединения с AI.";
   }
-</script>
-</body>
+
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+</script></body>
 </html>
