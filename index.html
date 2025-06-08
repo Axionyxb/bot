@@ -506,14 +506,7 @@ function handleAIResponse() {
   response.style.display = "block";
 }
 </script>
-<div class="chat-widget" id="ai-chat">
-<div class="chat-header">🤖 Aitora Assistant</div>
-<div class="chat-messages" id="chat-messages"></div>
-<div class="chat-input-container">
-<input id="chat-input" placeholder="Напишите ваш запрос..." type="text"/>
-<button onclick="sendChat()">➤</button>
-</div>
-</div>
+
 <!-- GPT Chat Widget -->
 <style>
   .chat-widget {
@@ -575,40 +568,6 @@ function handleAIResponse() {
     .chat-widget { width: 90%; right: 5%; }
   }
 </style>
-<script>
-  async function sendChat() {
-    const input = document.getElementById("chat-input");
-    const msg = input.value.trim();
-    if (!msg) return;
 
-    const chatBox = document.getElementById("chat-messages");
-    chatBox.innerHTML += `<div class="chat-message-user">${msg}</div>`;
-    input.value = "";
-
-    const loadingMsg = document.createElement("div");
-    loadingMsg.className = "chat-message-bot";
-    loadingMsg.textContent = "Печатает...";
-    chatBox.appendChild(loadingMsg);
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    try {
-      const response = await fetch("https://bot-kappa-self.vercel.app/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg })
-      });
-      if (!response.ok) {
-        loadingMsg.textContent = "❌ Сервер вернул ошибку: " + response.status;
-      } else {
-        const data = await response.json();
-        loadingMsg.textContent = data.reply || "❌ Ошибка при получении ответа.";
-      }
-    } catch (err) {
-      loadingMsg.textContent = "❌ Ошибка соединения с AI.";
-    }
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-</script>
 </body>
 </html>
