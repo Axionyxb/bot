@@ -258,39 +258,101 @@ body.dark .faq-answer {
   color: #e5e7eb;
 }
 
-.typing-wrapper {
-  font-size: 1.75rem;
-  font-weight: bold;
-  text-align: center;
-  margin: 3rem auto 2rem auto;
-  color: #4f46e5;
-  max-width: 90%;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #4f46e5;
-  height: auto;
-  min-height: 40px;
+.quiz-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-@media (min-width: 768px) {
-  .typing-wrapper {
-    font-size: 2rem;
-  }
+.quiz-select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
 }
-@media (min-width: 1024px) {
-  .typing-wrapper {
-    font-size: 2.2rem;
-  }
+.quiz-button {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.quiz-button:hover {
+  background-color: #4338ca;
+}
+.quiz-result {
+  background: #f1f5f9;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+body.dark .quiz-result {
+  background: #1f2937;
+  color: #e5e7eb;
 }
 
-.typing-wrapper {
-  opacity: 0;
-  animation: fadeInTyping 1.5s ease-in-out forwards;
-  animation-delay: 0.3s;
+.chat-widget {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 320px;
+  max-height: 500px;
+  background: white;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: sans-serif;
+  z-index: 9999;
 }
-@keyframes fadeInTyping {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.chat-header {
+  background: #4f46e5;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+}
+.chat-messages {
+  flex-grow: 1;
+  padding: 0.75rem;
+  overflow-y: auto;
+  font-size: 0.95rem;
+}
+.chat-input-container {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+.chat-input-container input {
+  flex-grow: 1;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+.chat-input-container button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.chat-message-user {
+  text-align: right;
+  margin: 0.3rem 0;
+  color: #111827;
+}
+.chat-message-bot {
+  text-align: left;
+  margin: 0.3rem 0;
+  color: #4f46e5;
+}
+@media (max-width: 600px) {
+  .chat-widget {
+    width: 90%;
+    right: 5%;
+  }
 }
 </style>
 <style>
@@ -332,7 +394,7 @@ body.dark .faq-answer {
 <header>
 <h1>Aitora</h1>
 <p>Создаём умные AI-решения под ключ — боты, ассистенты, генераторы контента и бизнес-интеграции.</p>
-<nav style="margin-top: 1rem;"><a href="#about" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">О нас</a><a href="#how" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Как мы работаем</a><a href="#why" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Почему мы</a><a href="#ai" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Возможности AI</a><a href="#form" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Заявка</a></nav></header><section id="typing-effect"><div class="typing-wrapper"><span id="typed-text"></span></div></section><div class="animated-wave">
+<nav style="margin-top: 1rem;"><a href="#about" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">О нас</a><a href="#how" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Как мы работаем</a><a href="#why" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Почему мы</a><a href="#ai" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Возможности AI</a><a href="#form" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Заявка</a></nav></header><div class="animated-wave">
 &lt;svg viewBox="0 0 1440 320" preserveAspectRatio="none" style="width: 100%; height: 60px;"&gt;
   &lt;path fill="#6366f1" fill-opacity="1" d="M0,224L60,229.3C120,235,240,245,360,240C480,235,600,213,720,192C840,171,960,149,1080,138.7C1200,128,1320,128,1380,128L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"&gt;&lt;/path&gt;
 &lt;/svg&gt;
@@ -483,34 +545,52 @@ function handleAIResponse() {
   response.innerText = text;
   response.style.display = "block";
 }
-</script><script>
-const typedText = document.getElementById("typed-text");
-const phrases = [
-  "Создаём AI-ботов...",
-  "Создаём ассистентов...",
-  "Создаём продукты будущего...",
-  "AI, который работает за вас..."
-];
-let phraseIndex = 0;
-let letterIndex = 0;
-let isDeleting = false;
+</script>
+<div class="chat-widget" id="ai-chat">
+<div class="chat-header">🤖 Aitora Assistant</div>
+<div class="chat-messages" id="chat-messages"></div>
+<div class="chat-input-container">
+<input id="chat-input" placeholder="Напишите ваш запрос..." type="text"/>
+<button onclick="sendChat()">➤</button>
+</div>
+</div>
+<script>
+function sendChat() {
+  const input = document.getElementById("chat-input");
+  const msg = input.value.trim();
+  if (!msg) return;
 
-function type() {
-  const currentPhrase = phrases[phraseIndex];
-  if (isDeleting) {
-    typedText.textContent = currentPhrase.substring(0, letterIndex--);
-    if (letterIndex < 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
-  } else {
-    typedText.textContent = currentPhrase.substring(0, letterIndex++);
-    if (letterIndex > currentPhrase.length + 10) {
-      isDeleting = true;
-    }
-  }
-  setTimeout(type, isDeleting ? 30 : 100);
+  const chatBox = document.getElementById("chat-messages");
+  const userDiv = document.createElement("div");
+  userDiv.className = "chat-message-user";
+  userDiv.textContent = msg;
+  chatBox.appendChild(userDiv);
+
+  input.value = "";
+  setTimeout(() => {
+    const botDiv = document.createElement("div");
+    botDiv.className = "chat-message-bot";
+    botDiv.textContent = generateBotResponse(msg);
+    chatBox.appendChild(botDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 600);
 }
-type();
+
+function generateBotResponse(input) {
+  const text = input.toLowerCase();
+  if (text.includes("ресторан") || text.includes("кафе")) {
+    return "AI может принимать заказы, бронировать столики и отвечать на вопросы гостей.";
+  } else if (text.includes("магазин") || text.includes("ecommerce")) {
+    return "AI поможет рекомендовать товары, консультировать и обрабатывать заказы.";
+  } else if (text.includes("юрист") || text.includes("документ")) {
+    return "AI может генерировать документы, подсказывать правовые нормы и автоматизировать FAQ.";
+  } else if (text.includes("обучение") || text.includes("курсы")) {
+    return "AI-ассистент для студентов может объяснять темы, проверять тесты и мотивировать.";
+  } else if (text.length < 3) {
+    return "Напишите, чем вы занимаетесь или что хотите автоматизировать.";
+  } else {
+    return "Интересно! AI может быть полезен в любой сфере — от генерации контента до автоответов.";
+  }
+}
 </script></body>
 </html>
