@@ -597,8 +597,12 @@ function handleAIResponse() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: msg })
       });
-      const data = await response.json();
-      loadingMsg.textContent = data.reply || "❌ Ошибка при получении ответа.";
+      if (!response.ok) {
+        loadingMsg.textContent = "❌ Сервер вернул ошибку: " + response.status;
+      } else {
+        const data = await response.json();
+        loadingMsg.textContent = data.reply || "❌ Ошибка при получении ответа.";
+      }
     } catch (err) {
       loadingMsg.textContent = "❌ Ошибка соединения с AI.";
     }
