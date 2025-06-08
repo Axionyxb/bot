@@ -199,6 +199,17 @@ body > *:not(.background-dots) {
   position: relative;
   z-index: 1;
 }
+
+footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+footer a:hover {
+  color: #6366f1;
+}
+footer p {
+  margin: 0.25rem 0;
+}
 </style>
 <style>
 @media (max-width: 768px) {
@@ -294,7 +305,12 @@ body > *:not(.background-dots) {
 <button type="submit">Отправить</button>
 </form>
 </section>
-<footer>© 2025 Aitora. Все права защищены.</footer>
+<footer><div class="contact-info">
+<p>📧 <a href="mailto:aitoraa@yandex.ru">aitoraa@yandex.ru</a></p>
+<p>📞 <a href="tel:+79603110778">+7 960 311-07-78</a></p>
+<p>💬 <a href="https://t.me/k0lyasik10" target="_blank">Написать в Telegram</a></p>
+<p style="margin-top: 1rem; color: #6b7280;">© 2025 Aitora. Все права защищены.</p>
+</div></footer>
 <script>
     document.getElementById("tg-form").addEventListener("submit", function(e) {
       e.preventDefault();
