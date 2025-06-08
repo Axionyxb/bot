@@ -282,6 +282,16 @@ body.dark .faq-answer {
     font-size: 2.2rem;
   }
 }
+
+.typing-wrapper {
+  opacity: 0;
+  animation: fadeInTyping 1.5s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+@keyframes fadeInTyping {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 <style>
 @media (max-width: 768px) {
