@@ -257,6 +257,31 @@ body.dark .faq-answer {
   background: #111827;
   color: #e5e7eb;
 }
+
+.typing-wrapper {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 3rem auto 2rem auto;
+  color: #4f46e5;
+  max-width: 90%;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #4f46e5;
+  height: auto;
+  min-height: 40px;
+}
+@media (min-width: 768px) {
+  .typing-wrapper {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .typing-wrapper {
+    font-size: 2.2rem;
+  }
+}
 </style>
 <style>
 @media (max-width: 768px) {
@@ -297,7 +322,7 @@ body.dark .faq-answer {
 <header>
 <h1>Aitora</h1>
 <p>Создаём умные AI-решения под ключ — боты, ассистенты, генераторы контента и бизнес-интеграции.</p>
-<nav style="margin-top: 1rem;"><a href="#about" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">О нас</a><a href="#how" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Как мы работаем</a><a href="#why" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Почему мы</a><a href="#ai" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Возможности AI</a><a href="#form" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Заявка</a></nav></header><div class="animated-wave">
+<nav style="margin-top: 1rem;"><a href="#about" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">О нас</a><a href="#how" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Как мы работаем</a><a href="#why" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Почему мы</a><a href="#ai" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Возможности AI</a><a href="#form" style="color: white; margin: 0 1rem; text-decoration: underline; font-size: 0.9rem;">Заявка</a></nav></header><section id="typing-effect"><div class="typing-wrapper"><span id="typed-text"></span></div></section><div class="animated-wave">
 &lt;svg viewBox="0 0 1440 320" preserveAspectRatio="none" style="width: 100%; height: 60px;"&gt;
   &lt;path fill="#6366f1" fill-opacity="1" d="M0,224L60,229.3C120,235,240,245,360,240C480,235,600,213,720,192C840,171,960,149,1080,138.7C1200,128,1320,128,1380,128L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"&gt;&lt;/path&gt;
 &lt;/svg&gt;
@@ -448,5 +473,34 @@ function handleAIResponse() {
   response.innerText = text;
   response.style.display = "block";
 }
+</script><script>
+const typedText = document.getElementById("typed-text");
+const phrases = [
+  "Создаём AI-ботов...",
+  "Создаём ассистентов...",
+  "Создаём продукты будущего...",
+  "AI, который работает за вас..."
+];
+let phraseIndex = 0;
+let letterIndex = 0;
+let isDeleting = false;
+
+function type() {
+  const currentPhrase = phrases[phraseIndex];
+  if (isDeleting) {
+    typedText.textContent = currentPhrase.substring(0, letterIndex--);
+    if (letterIndex < 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+  } else {
+    typedText.textContent = currentPhrase.substring(0, letterIndex++);
+    if (letterIndex > currentPhrase.length + 10) {
+      isDeleting = true;
+    }
+  }
+  setTimeout(type, isDeleting ? 30 : 100);
+}
+type();
 </script></body>
 </html>
