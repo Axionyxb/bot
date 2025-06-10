@@ -617,5 +617,33 @@ function handleAIResponse() {
     .chat-widget { width: 90%; right: 5%; }
   }
 </style>
+
+<script>
+document.getElementById('tg-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const token = '12315:AAGJmIhsKl0xY3sciWyBMgAEb_ZjsTgKJww';
+  const chat_id = '791844006';
+  const name = this.name.value;
+  const email = this.email.value;
+  const idea = this.idea.value;
+
+  const message = `📝 Новая заявка:%0A👤 Имя: ${name}%0A📧 Email: ${email}%0A💡 Идея: ${idea}`;
+
+  fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${message}`)
+    .then(response => {
+      if (response.ok) {
+        alert('Заявка отправлена!');
+        document.getElementById('tg-form').reset();
+      } else {
+        alert('Ошибка при отправке. Попробуйте ещё раз.');
+      }
+    })
+    .catch(error => {
+      alert('Ошибка: ' + error.message);
+    });
+});
+</script>
+
 </body>
 </html>
