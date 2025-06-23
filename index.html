@@ -462,7 +462,56 @@ body.dark .quiz-result {
 <div><img alt="" src="https://mc.yandex.ru/watch/102596052" style="position:absolute; left:-9999px;"/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
-</head>
+<style>
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+.why-card {
+  position: relative;
+  width: 150px;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.why-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.why-card button {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.why-card button:hover {
+  background: #4338ca;
+}
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style></head>
 <body><div class="background-dots"></div><button id="theme-toggle" style="position: fixed; top: 1rem; right: 1rem; z-index: 9999; width: 40px; height: 40px; background: #4f46e5; color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">🌙</button>
 <header>
 <h1><span class="typing-text">Aitora</span></h1>
@@ -492,53 +541,6 @@ body.dark .quiz-result {
 </section>
 <section id="why">
 <h2>Почему мы?</h2>
-<div class="card">
-
-
-<style>
-.why-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.why-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  max-width: 220px;
-  width: 100%;
-  text-align: center;
-}
-.why-card img.why-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
-}
-.why-card button {
-  background: #4f46e5;
-  color: white;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.why-card button:hover {
-  background: #4338ca;
-}
-@media (max-width: 768px) {
-  .why-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-</style>
-</div>
 
 <div class="why-grid">
 <div class="why-card">
@@ -557,53 +559,15 @@ body.dark .quiz-result {
 <img alt="AI 4" src="ai4.png"/>
 <button onclick="alert('🔐 NDA и полная конфиденциальность')">Почему мы?</button>
 </div>
+<div class="why-card">
+<img alt="AI 5" src="ai5.png"/>
+<button onclick="alert('🌟 Индивидуальные AI-решения для роста вашего бизнеса')">Почему мы?</button>
 </div>
-<style>
-.why-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.why-card {
-  position: relative;
-  width: 260px;
-  height: 360px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.why-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.why-card button {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #4f46e5;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.why-card button:hover {
-  background: #4338ca;
-}
-@media (max-width: 768px) {
-  .why-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-</style>
+<div class="why-card">
+<img alt="AI 6" src="ai6.png"/>
+<button onclick="alert('⚡ Эффективность и инновации через искусственный интеллект')">Почему мы?</button>
+</div>
+</div>
 </section>
 <section id="ai">
 <h2>Что умеет AI сегодня?</h2>
