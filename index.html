@@ -541,7 +541,6 @@ body.dark .quiz-result {
 </section>
 <section id="why">
 <h2>Почему мы?</h2>
-
 <div class="why-grid">
 <div class="why-card">
 <img alt="AI 1" src="ai1.png"/>
@@ -585,7 +584,7 @@ body.dark .quiz-result {
 <h2>Оставьте заявку</h2>
 <form id="tg-form">
 <input name="name" placeholder="Имя" required="" type="text"/>
-<input name="email" placeholder="Почта" required="" type="email"/>
+<input name="contact" placeholder="Телефон или Telegram" required="" type="text"/>
 <textarea name="idea" placeholder="Опишите вашу идею" required=""></textarea>
 <button type="submit">Отправить</button>
 </form>
@@ -715,10 +714,10 @@ document.getElementById('tg-form').addEventListener('submit', function(e) {
   const token = '8061339859:AAE3yC0YEFcohhYlRi12q_FEDAz34DgrED0';
     const chat_id = '791844006';
   const name = this.name.value;
-  const email = this.email.value;
+  const contact = this.contact.value;
   const idea = this.idea.value;
 
-  const message = `📝 Новая заявка:\n\n👤 Имя: ${name}\n📧 Email: ${email}\n💡 Идея: ${idea}`;
+  const message = `📝 Новая заявка:\n\n👤 Имя: ${name}\n📱 Контакт: ${contact}\n💡 Идея: ${idea}`;
 
   fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',
