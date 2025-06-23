@@ -441,7 +441,7 @@ body.dark .quiz-result {
 }
 </style>
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script type="text/javascript">
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
     m[i].l=1*new Date();
     for (var j = 0; j < document.scripts.length; j++) {
@@ -459,10 +459,9 @@ body.dark .quiz-result {
     });
 </script>
 <noscript>
-  <div><img src="https://mc.yandex.ru/watch/102596052" style="position:absolute; left:-9999px;" alt="" /></div>
+<div><img alt="" src="https://mc.yandex.ru/watch/102596052" style="position:absolute; left:-9999px;"/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
-
 </head>
 <body><div class="background-dots"></div><button id="theme-toggle" style="position: fixed; top: 1rem; right: 1rem; z-index: 9999; width: 40px; height: 40px; background: #4f46e5; color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">🌙</button>
 <header>
@@ -494,30 +493,8 @@ body.dark .quiz-result {
 <section id="why">
 <h2>Почему мы?</h2>
 <div class="card">
-<ul>
-<li>🎯 Фокус на AI-проектах — мы не делаем всё подряд</li>
-<li>🧠 Понимание и бизнеса, и технологий</li>
-<li>🚀 Быстрый запуск — MVP от 7 дней</li>
-<li>🔐 NDA и полная конфиденциальность</li>
-</ul>
-<div class="why-grid">
-  <div class="why-card">
-    <img src="ai1.png" alt="AI 1" class="why-img"/>
-    <button onclick="alert('🎯 Фокус на AI-проектах — мы не делаем всё подряд')">Почему мы?</button>
-  </div>
-  <div class="why-card">
-    <img src="ai2.png" alt="AI 2" class="why-img"/>
-    <button onclick="alert('🧠 Понимание и бизнеса, и технологий')">Почему мы?</button>
-  </div>
-  <div class="why-card">
-    <img src="ai3.png" alt="AI 3" class="why-img"/>
-    <button onclick="alert('🚀 Быстрый запуск — MVP от 7 дней')">Почему мы?</button>
-  </div>
-  <div class="why-card">
-    <img src="ai4.png" alt="AI 4" class="why-img"/>
-    <button onclick="alert('🔐 NDA и полная конфиденциальность')">Почему мы?</button>
-  </div>
-</div>
+
+
 <style>
 .why-grid {
   display: flex;
@@ -561,8 +538,72 @@ body.dark .quiz-result {
   }
 }
 </style>
-
 </div>
+
+<div class="why-grid">
+<div class="why-card">
+<img alt="AI 1" src="ai1.png"/>
+<button onclick="alert('🎯 Фокус на AI-проектах — мы не делаем всё подряд')">Почему мы?</button>
+</div>
+<div class="why-card">
+<img alt="AI 2" src="ai2.png"/>
+<button onclick="alert('🧠 Понимание и бизнеса, и технологий')">Почему мы?</button>
+</div>
+<div class="why-card">
+<img alt="AI 3" src="ai3.png"/>
+<button onclick="alert('🚀 Быстрый запуск — MVP от 7 дней')">Почему мы?</button>
+</div>
+<div class="why-card">
+<img alt="AI 4" src="ai4.png"/>
+<button onclick="alert('🔐 NDA и полная конфиденциальность')">Почему мы?</button>
+</div>
+</div>
+<style>
+.why-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.why-card {
+  position: relative;
+  width: 260px;
+  height: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.why-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.why-card button {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.why-card button:hover {
+  background: #4338ca;
+}
+@media (max-width: 768px) {
+  .why-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
 </section>
 <section id="ai">
 <h2>Что умеет AI сегодня?</h2>
@@ -703,7 +744,6 @@ function handleAIResponse() {
     .chat-widget { width: 90%; right: 5%; }
   }
 </style>
-
 <script>
 document.getElementById('tg-form').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -742,6 +782,5 @@ document.getElementById('tg-form').addEventListener('submit', function(e) {
   });
 });
 </script>
-
 </body>
 </html>
