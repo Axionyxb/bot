@@ -752,11 +752,15 @@ document.getElementById('tg-form').addEventListener('submit', function(e) {
 });
 </script>
 
+
 <script>
 function toggleWhy(button) {
   const answer = button.nextElementSibling;
-  answer.style.display = (answer.style.display === "none" || !answer.style.display) ? "block" : "none";
+  if (answer) {
+    answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
+  }
 }
 </script>
+
 </body>
 </html>
