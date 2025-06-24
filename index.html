@@ -544,27 +544,33 @@ body.dark .quiz-result {
 <div class="why-grid">
 <div class="why-card">
 <img alt="AI 1" src="ai1.png"/>
-<button onclick="alert('🎯 Фокус на AI-проектах — мы не делаем всё подряд')">Почему мы?</button>
+<button onclick="toggleWhy(this)">Почему мы?</button>
+  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🎯 Фокус на AI-проектах — мы не делаем всё подряд</div>
 </div>
 <div class="why-card">
 <img alt="AI 2" src="ai2.png"/>
-<button onclick="alert('🧠 Понимание и бизнеса, и технологий')">Почему мы?</button>
+<button onclick="toggleWhy(this)">Почему мы?</button>
+  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🧠 Понимание и бизнеса, и технологий</div>
 </div>
 <div class="why-card">
 <img alt="AI 3" src="ai3.png"/>
-<button onclick="alert('🚀 Быстрый запуск — MVP от 7 дней')">Почему мы?</button>
+<button onclick="toggleWhy(this)">Почему мы?</button>
+  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🚀 Быстрый запуск — MVP от 7 дней</div>
 </div>
 <div class="why-card">
 <img alt="AI 4" src="ai4.png"/>
-<button onclick="alert('🔐 NDA и полная конфиденциальность')">Почему мы?</button>
+<button onclick="toggleWhy(this)">Почему мы?</button>
+  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🔐 NDA и полная конфиденциальность</div>
 </div>
 <div class="why-card">
 <img alt="AI 5" src="ai5.png"/>
-<button onclick="alert('🌟 Индивидуальные AI-решения для роста вашего бизнеса')">Почему мы?</button>
+<button onclick="toggleWhy(this)">Почему мы?</button>
+  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🌟 Индивидуальные AI-решения для роста вашего бизнеса</div>
 </div>
 <div class="why-card">
 <img alt="AI 6" src="ai6.png"/>
-<button onclick="alert('⚡ Эффективность и инновации через искусственный интеллект')">Почему мы?</button>
+<button onclick="toggleWhy(this)">Почему мы?</button>
+  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">⚡ Эффективность и инновации через искусственный интеллект</div>
 </div>
 </div>
 </section>
@@ -744,6 +750,13 @@ document.getElementById('tg-form').addEventListener('submit', function(e) {
     alert('Ошибка: ' + error.message);
   });
 });
+</script>
+
+<script>
+function toggleWhy(button) {
+  const answer = button.nextElementSibling;
+  answer.style.display = (answer.style.display === "none" || !answer.style.display) ? "block" : "none";
+}
 </script>
 </body>
 </html>
