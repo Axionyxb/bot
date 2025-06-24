@@ -407,45 +407,61 @@ body.dark .quiz-result {
 
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   justify-items: center;
+  margin-bottom: 2rem;
 }
-.why-card {
+.why-cell {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
 }
 .why-card img {
   width: 100%;
+  max-width: 180px;
   height: auto;
-  object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  display: block;
-  margin: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .why-card button {
+  margin-top: 0.5rem;
   background: #4f46e5;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 0 0 0 0;
-  width: 100%;
-  font-size: 0.9rem;
+  border-radius: 8px;
   cursor: pointer;
 }
-.why-card .why-answer {
-  padding: 0.75rem 1rem;
+.why-explanation {
   display: none;
-  font-size: 0.85rem;
-  text-align: left;
+  background: #f3f4f6;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.why-explanation.show {
+  display: block;
+}
+
+/* Animation and mobile support */
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.why-explanation {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+.why-explanation.show {
+  display: block;
+  max-height: 200px;
+  opacity: 1;
 }
 </style>
 <style>
@@ -584,7 +600,7 @@ body.dark .quiz-result {
 </section>
 <section id="why">
 <h2>Почему мы?</h2>
-<div class="why-grid"><div class="why-card"><img alt="AI 1" src="ai1.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🎯 Фокус на AI-проектах — мы не делаем всё подряд</div></div></div><div class="why-card"><img alt="AI 2" src="ai2.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🧠 Понимание и бизнеса, и технологий</div></div></div><div class="why-card"><img alt="AI 3" src="ai3.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🚀 Быстрый запуск — MVP от 7 дней</div></div></div><div class="why-card"><img alt="AI 4" src="ai4.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🔐 NDA и полная конфиденциальность</div></div></div><div class="why-card"><img alt="AI 5" src="ai5.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🌟 Индивидуальные AI-решения для роста вашего бизнеса</div></div></div><div class="why-card"><img alt="AI 6" src="ai6.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">⚡ Эффективность и инновации через искусственный интеллект</div></div></div></div>
+<div class="why-grid"><div class="why-cell"><div class="why-card"><img alt="AI 1" src="ai1.png"/><button onclick="toggleWhy(0)">Почему мы?</button></div><div class="why-explanation" id="why-text-0"></div></div><div class="why-cell"><div class="why-card"><img alt="AI 2" src="ai2.png"/><button onclick="toggleWhy(1)">Почему мы?</button></div><div class="why-explanation" id="why-text-1"></div></div><div class="why-cell"><div class="why-card"><img alt="AI 3" src="ai3.png"/><button onclick="toggleWhy(2)">Почему мы?</button></div><div class="why-explanation" id="why-text-2"></div></div><div class="why-cell"><div class="why-card"><img alt="AI 4" src="ai4.png"/><button onclick="toggleWhy(3)">Почему мы?</button></div><div class="why-explanation" id="why-text-3"></div></div><div class="why-cell"><div class="why-card"><img alt="AI 5" src="ai5.png"/><button onclick="toggleWhy(4)">Почему мы?</button></div><div class="why-explanation" id="why-text-4"></div></div><div class="why-cell"><div class="why-card"><img alt="AI 6" src="ai6.png"/><button onclick="toggleWhy(5)">Почему мы?</button></div><div class="why-explanation" id="why-text-5"></div></div></div>
 </section>
 <section id="ai">
 <h2>Что умеет AI сегодня?</h2>
@@ -764,18 +780,26 @@ document.getElementById('tg-form').addEventListener('submit', function(e) {
 });
 </script>
 <script>
-function toggleWhy(button) {
-  const answer = button.nextElementSibling;
-  if (answer) {
-    answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
+const texts = ['🎯 Фокус на AI-проектах — мы не делаем всё подряд', '🧠 Понимание и бизнеса, и технологий', '🚀 Быстрый запуск — MVP от 7 дней', '🔐 NDA и полная конфиденциальность', '🌟 Индивидуальные AI-решения для роста вашего бизнеса', '⚡ Эффективность и инновации через искусственный интеллект'];
+
+function toggleWhy(index) {
+  for (let i = 0; i < 6; i++) {
+    const el = document.getElementById('why-text-' + i);
+    if (el && i !== index) {
+      el.classList.remove('show');
+      el.innerText = '';
+    }
   }
-}
-</script>
-<script>
-function toggleWhy(button) {
-  const answer = button.nextElementSibling;
-  if (answer && answer.classList.contains('why-answer')) {
-    answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
+
+  const el = document.getElementById('why-text-' + index);
+  if (el) {
+    if (el.classList.contains('show')) {
+      el.classList.remove('show');
+      el.innerText = '';
+    } else {
+      el.innerText = texts[index];
+      el.classList.add('show');
+    }
   }
 }
 </script></body>
