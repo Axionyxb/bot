@@ -511,7 +511,16 @@ body.dark .quiz-result {
     grid-template-columns: 1fr;
   }
 }
-</style></head>
+<style>
+.why-answer {
+  display: none;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+}
+.why-answer.show {
+  display: block;
+}
+</style></style></head>
 <body><div class="background-dots"></div><button id="theme-toggle" style="position: fixed; top: 1rem; right: 1rem; z-index: 9999; width: 40px; height: 40px; background: #4f46e5; color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">🌙</button>
 <header>
 <h1><span class="typing-text">Aitora</span></h1>
@@ -753,14 +762,16 @@ document.getElementById('tg-form').addEventListener('submit', function(e) {
 </script>
 
 
+
 <script>
 function toggleWhy(button) {
   const answer = button.nextElementSibling;
-  if (answer) {
-    answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
+  if (answer && answer.classList.contains('why-answer')) {
+    answer.classList.toggle('show');
   }
 }
 </script>
+
 
 </body>
 </html>
