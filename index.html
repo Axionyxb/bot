@@ -404,6 +404,49 @@ body.dark .quiz-result {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.3);
   }
 }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+.why-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.why-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: block;
+  margin: 0;
+}
+.why-card button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0 0;
+  width: 100%;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.why-card .why-answer {
+  padding: 0.75rem 1rem;
+  display: none;
+  font-size: 0.85rem;
+  text-align: left;
+}
 </style>
 <style>
 @media (max-width: 768px) {
@@ -511,16 +554,7 @@ body.dark .quiz-result {
     grid-template-columns: 1fr;
   }
 }
-<style>
-.why-answer {
-  display: none;
-  padding: 0.5rem;
-  font-size: 0.85rem;
-}
-.why-answer.show {
-  display: block;
-}
-</style></style></head>
+</style></head>
 <body><div class="background-dots"></div><button id="theme-toggle" style="position: fixed; top: 1rem; right: 1rem; z-index: 9999; width: 40px; height: 40px; background: #4f46e5; color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">🌙</button>
 <header>
 <h1><span class="typing-text">Aitora</span></h1>
@@ -550,38 +584,7 @@ body.dark .quiz-result {
 </section>
 <section id="why">
 <h2>Почему мы?</h2>
-<div class="why-grid">
-<div class="why-card">
-<img alt="AI 1" src="ai1.png"/>
-<button onclick="toggleWhy(this)">Почему мы?</button>
-  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🎯 Фокус на AI-проектах — мы не делаем всё подряд</div>
-</div>
-<div class="why-card">
-<img alt="AI 2" src="ai2.png"/>
-<button onclick="toggleWhy(this)">Почему мы?</button>
-  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🧠 Понимание и бизнеса, и технологий</div>
-</div>
-<div class="why-card">
-<img alt="AI 3" src="ai3.png"/>
-<button onclick="toggleWhy(this)">Почему мы?</button>
-  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🚀 Быстрый запуск — MVP от 7 дней</div>
-</div>
-<div class="why-card">
-<img alt="AI 4" src="ai4.png"/>
-<button onclick="toggleWhy(this)">Почему мы?</button>
-  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🔐 NDA и полная конфиденциальность</div>
-</div>
-<div class="why-card">
-<img alt="AI 5" src="ai5.png"/>
-<button onclick="toggleWhy(this)">Почему мы?</button>
-  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">🌟 Индивидуальные AI-решения для роста вашего бизнеса</div>
-</div>
-<div class="why-card">
-<img alt="AI 6" src="ai6.png"/>
-<button onclick="toggleWhy(this)">Почему мы?</button>
-  <div class="why-answer" style="display:none; padding: 0.5rem; font-size: 0.85rem;">⚡ Эффективность и инновации через искусственный интеллект</div>
-</div>
-</div>
+<div class="why-grid"><div class="why-card"><img alt="AI 1" src="ai1.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🎯 Фокус на AI-проектах — мы не делаем всё подряд</div></div></div><div class="why-card"><img alt="AI 2" src="ai2.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🧠 Понимание и бизнеса, и технологий</div></div></div><div class="why-card"><img alt="AI 3" src="ai3.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🚀 Быстрый запуск — MVP от 7 дней</div></div></div><div class="why-card"><img alt="AI 4" src="ai4.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🔐 NDA и полная конфиденциальность</div></div></div><div class="why-card"><img alt="AI 5" src="ai5.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">🌟 Индивидуальные AI-решения для роста вашего бизнеса</div></div></div><div class="why-card"><img alt="AI 6" src="ai6.png"/><div><button onclick="toggleWhy(this)">Почему мы?</button><div class="why-answer">⚡ Эффективность и инновации через искусственный интеллект</div></div></div></div>
 </section>
 <section id="ai">
 <h2>Что умеет AI сегодня?</h2>
@@ -760,18 +763,20 @@ document.getElementById('tg-form').addEventListener('submit', function(e) {
   });
 });
 </script>
-
-
-
+<script>
+function toggleWhy(button) {
+  const answer = button.nextElementSibling;
+  if (answer) {
+    answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
+  }
+}
+</script>
 <script>
 function toggleWhy(button) {
   const answer = button.nextElementSibling;
   if (answer && answer.classList.contains('why-answer')) {
-    answer.classList.toggle('show');
+    answer.style.display = (answer.style.display === "none" || answer.style.display === "") ? "block" : "none";
   }
 }
-</script>
-
-
-</body>
+</script></body>
 </html>
